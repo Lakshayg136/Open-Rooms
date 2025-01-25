@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Open Rooms',
         theme: AppTheme.darkThemeMode,
-        // home: LoginScreen(),
         home: LoginScreen());
   }
 }
