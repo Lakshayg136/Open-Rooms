@@ -9,7 +9,9 @@ class Pallete {
   static const String logoFont = 'Fira Sans';
   // static const String logoFont = 'Times New Roman';
 
+  static const Color appbarColor = Color.fromRGBO(90, 144, 247, 1);
   static const Color backgroundColor = Color.fromRGBO(255, 255, 255, 1);
+
   static const Color primaryColor = Colors.white;
   static const Color secondaryColor = Colors.grey;
   static const Color transparent = Colors.transparent;
@@ -22,4 +24,8 @@ class Pallete {
 
   static const Color borderColor = Color.fromRGBO(90, 144, 247, 1);
   static const Color loadColor = Color.fromRGBO(46, 120, 240, 1);
+
+  static const double drawerFontSize = 23;
+  static const double drawerIconSize = 23;
+  static const String drawerFont = 'Times New Roman';
 }

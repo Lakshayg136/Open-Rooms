@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:open_rooms/resources/auth/auth_controller.dart';
+import 'package:open_rooms/screens/home/body.dart';
+import 'package:open_rooms/screens/home/drawers/list_drawer.dart';
+import 'package:open_rooms/screens/home/drawers/settings_drawer.dart';
+import 'package:open_rooms/utils/app_pallete.dart';
+
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({super.key});
+
+  void displayDrawer(BuildContext context) {
+    Scaffold.of(context).openDrawer();
+  }
+
+  void displayEndDrawer(BuildContext context) {
+    Scaffold.of(context).openEndDrawer();
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userProvider)!;
+    return Scaffold(
+        backgroundColor: Pallete.backgroundColor,
+        appBar: AppBar(
+          title: const Text(
+            Pallete.logoText,
+            style: TextStyle(
+              fontSize: 25,
+              fontFamily: Pallete.logoFont,
+              color: Pallete.logoColor,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          centerTitle: true,
+          leading: Builder(builder: (context) {
+            return IconButton(
+              onPressed: () => displayDrawer(context),
+              icon: Icon(Icons.menu_rounded),
+              iconSize: 35,
+            );
+          }),
+          foregroundColor: Pallete.logoColor,
+          backgroundColor: Pallete.backgroundColor,
+          actions: [
+            IconButton(
+                onPressed: () => SettingsDrawer(),
+                icon: Icon(Icons.settings),
+                iconSize: 35)
+          ],
+        ),
+        drawer: const ListDrawer(),
+        endDrawer: const SettingsDrawer(),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_outlined), label: '')
+          ],
+        ),
+        body: BodyHome());
+  }
+}
