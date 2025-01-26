@@ -21,4 +21,5 @@ class Pallete {
   static const Color gradient3 = Color.fromRGBO(161, 196, 253, 1);
 
   static const Color borderColor = Color.fromRGBO(90, 144, 247, 1);
+  static const Color loadColor = Color.fromRGBO(46, 120, 240, 1);
 }

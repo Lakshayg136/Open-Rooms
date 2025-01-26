@@ -16,6 +16,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController batchController = TextEditingController();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    uidController.dispose();
+    batchController.dispose();
+    super.dispose();
+  }
+
+  void signUpUser() async {}
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: 20),
             CustomField(controller: batchController, hintText: "Batch"),
             SizedBox(height: 20),
-            GradientButton()
+            GradientButton(buttonText: 'Continue', onTap: () {})
           ],
         )),
       ),
