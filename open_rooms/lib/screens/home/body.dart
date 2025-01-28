@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:open_rooms/screens/home/blocks.dart';
-import 'package:open_rooms/screens/signup_screen.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
 
 class BodyHome extends StatelessWidget {
@@ -57,23 +56,32 @@ class BodyHome extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                Container(
+                SizedBox(
                   height: 200,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
+                  child: Row(
                     children: [
                       Blocks(
                           image: 'assets/a1_block.jpg',
                           text: 'A Block',
                           onTap: () {}),
+                      SizedBox(width: 10),
                       Blocks(
                           image: 'assets/d_block.jpg',
                           text: 'B Block',
                           onTap: () {}),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30),
+                SizedBox(
+                  height: 200,
+                  child: Row(
+                    children: [
                       Blocks(
                           image: 'assets/c_block.jpg',
                           text: 'C Block',
                           onTap: () {}),
+                      SizedBox(width: 10),
                       Blocks(
                           image: 'assets/d_block.jpg',
                           text: 'D Block',
@@ -81,16 +89,15 @@ class BodyHome extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 40),
-                Container(
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/home_bg.png')),
-                    ))
+                // Container(
+                //     height: 150,
+                //     decoration: BoxDecoration(
+                //       color: Colors.orange,
+                //       borderRadius: BorderRadius.circular(20),
+                //       image: DecorationImage(
+                //           fit: BoxFit.cover,
+                //           image: AssetImage('assets/home_bg.png')),
+                //     ))
               ],
             ),
           )

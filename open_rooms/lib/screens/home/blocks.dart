@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
 
 class Blocks extends StatelessWidget {
-  const Blocks({super.key, required this.image, required this.text, required this.onTap});
+  const Blocks(
+      {super.key,
+      required this.image,
+      required this.text,
+      required this.onTap});
 
   final String image;
   final String text;
@@ -11,7 +15,7 @@ class Blocks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 2.8 / 3,
+      aspectRatio: 2.7 / 3,
       child: GestureDetector(
         onTap: onTap,
         child: Container(
@@ -29,20 +33,22 @@ class Blocks extends StatelessWidget {
             //   Pallete.gradient3,
             // ])
           ),
-          child: Stack(
-            children: [
-              Positioned(
-                  bottom: 20,
-                  left: 50,
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Pallete.primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ))
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Stack(
+              children: [
+                Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      text,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Pallete.primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ))
+              ],
+            ),
           ),
         ),
       ),

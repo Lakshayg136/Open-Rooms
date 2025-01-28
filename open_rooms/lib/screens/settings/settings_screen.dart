@@ -75,7 +75,7 @@ class SettingsScreen extends ConsumerWidget {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      user!.batch,
+                                      user.batch,
                                       style: TextStyle(
                                           color: Pallete.primaryColor,
                                           fontSize: 20,
