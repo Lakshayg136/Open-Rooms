@@ -1,29 +1,47 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:open_rooms/resources/auth/auth_controller.dart';
+import 'package:open_rooms/resources/user_profile/user_profile_controller.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
 import 'package:open_rooms/widgets/custom_field.dart';
 import 'package:open_rooms/widgets/gradient_button.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignUpScreen extends ConsumerStatefulWidget {
+  final String uid;
+  const SignUpScreen({required this.uid, super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  ConsumerState<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController uidController = TextEditingController();
+  // TextEditingController uidController = TextEditingController();
   TextEditingController batchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(text: ref.read(userProvider)!.name);
+    batchController =
+        TextEditingController(text: ref.read(userProvider)!.batch);
+  }
 
   @override
   void dispose() {
     nameController.dispose();
-    uidController.dispose();
     batchController.dispose();
     super.dispose();
   }
 
-  void signUpUser() async {}
+  void saveProfile() {
+    ref.read(userProfileControllerProvider.notifier).editProfile(
+        name: nameController.text.trim(),
+        context: context,
+        batch: batchController.text.trim());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +63,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: 20),
             CustomField(controller: nameController, hintText: "Full Name"),
             SizedBox(height: 20),
-            CustomField(controller: uidController, hintText: "College UID"),
+            // CustomField(controller: uidController, hintText: "College UID"),
+            // SizedBox(height: 20),
+            CustomField(
+                controller: batchController, hintText: "Batch (Example: 401A)"),
             SizedBox(height: 20),
-            CustomField(controller: batchController, hintText: "Batch"),
-            SizedBox(height: 20),
-            GradientButton(buttonText: 'Continue', onTap: () {})
+            GradientButton(buttonText: 'Continue', onTap: saveProfile)
           ],
         )),
       ),

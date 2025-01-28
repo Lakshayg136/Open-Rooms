@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_rooms/models/user_model.dart';
 import 'package:open_rooms/resources/auth/auth_controller.dart';
-import 'package:open_rooms/utils/router.dart';
+import 'package:open_rooms/router.dart';
 import 'package:open_rooms/utils/theme.dart';
 import 'package:open_rooms/widgets/error_text.dart';
 import 'package:open_rooms/widgets/loader.dart';

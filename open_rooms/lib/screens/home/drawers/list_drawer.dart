@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
+import 'package:routemaster/routemaster.dart';
 
 class ListDrawer extends ConsumerWidget {
   const ListDrawer({super.key});
+
+  void navigateToSettings(BuildContext context) {
+    Routemaster.of(context).push('/settings');
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -78,6 +83,22 @@ class ListDrawer extends ConsumerWidget {
                 size: Pallete.drawerIconSize,
               ),
               onTap: () {},
+            ),
+            ListTile(
+              title: Text(
+                'Settings',
+                style: TextStyle(
+                  color: Pallete.textColor,
+                  fontFamily: Pallete.drawerFont,
+                  fontSize: Pallete.drawerFontSize,
+                ),
+              ),
+              leading: Icon(
+                Icons.settings,
+                color: Pallete.textColor,
+                size: Pallete.drawerIconSize,
+              ),
+              onTap: () => navigateToSettings(context),
             ),
           ],
         )),

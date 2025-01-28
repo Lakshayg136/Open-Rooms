@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_rooms/resources/auth/auth_controller.dart';
 import 'package:open_rooms/screens/home/body.dart';
 import 'package:open_rooms/screens/home/drawers/list_drawer.dart';
-import 'package:open_rooms/screens/home/drawers/settings_drawer.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -57,23 +56,23 @@ class HomeScreen extends ConsumerWidget {
         ),
         drawer: const ListDrawer(),
         // endDrawer: const SettingsDrawer(),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_rounded,
-                  color: Pallete.logoColor,
-                ),
-                label: ''),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_circle_outlined,
-                  color: Pallete.logoColor,
-                ),
-                label: '')
-          ],
-          backgroundColor: Pallete.backgroundColor,
-        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: [
+        //     BottomNavigationBarItem(
+        //         icon: Icon(
+        //           Icons.home_rounded,
+        //           color: Pallete.logoColor,
+        //         ),
+        //         label: ''),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(
+        //           Icons.account_circle_outlined,
+        //           color: Pallete.logoColor,
+        //         ),
+        //         label: '')
+        //   ],
+        //   backgroundColor: Pallete.backgroundColor,
+        // ),
         body: BodyHome(
           username: user.name,
         ));

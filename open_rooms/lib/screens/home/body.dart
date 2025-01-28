@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:open_rooms/screens/home/blocks.dart';
 import 'package:open_rooms/screens/signup_screen.dart';
@@ -83,8 +81,16 @@ class BodyHome extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
-                Text('hello')
+                SizedBox(height: 40),
+                Container(
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/home_bg.png')),
+                    ))
               ],
             ),
           )
