@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:open_rooms/screens/buildings/buildings.dart';
+import 'package:open_rooms/screens/core_body/block.dart';
+import 'package:open_rooms/screens/core_body/building.dart';
+import 'package:open_rooms/screens/core_body/floor_plan.dart';
 import 'package:open_rooms/screens/feature_not_added.dart';
 import 'package:open_rooms/screens/home/home_screen.dart';
 import 'package:open_rooms/screens/login_screen.dart';
 import 'package:open_rooms/screens/settings/settings_screen.dart';
 import 'package:open_rooms/screens/signup_screen.dart';
+import 'package:open_rooms/screens/timetable.dart';
 import 'package:routemaster/routemaster.dart';
 
 final loggedOutRoute = RouteMap(routes: {
@@ -18,12 +21,23 @@ final loggedInRoute = RouteMap(routes: {
           child: SignUpScreen(
         uid: routeData.pathParameters['uid']!,
       )),
-  '/block/:block': (routeData) => MaterialPage(
-          child: Buildings(
-        block: routeData.pathParameters['block']!,
-      )),
   '/feature-missing/:page': (routeData) => MaterialPage(
           child: FeatureNotAdded(
         page: routeData.pathParameters['page']!,
+      )),
+  '/timetable': (routeData) => MaterialPage(
+          child: Timetable()),
+  '/block/:block': (routeData) => MaterialPage(
+          child: Block(
+        block: routeData.pathParameters['block']!,
+      )),
+  '/building/:sblock': (routeData) => MaterialPage(
+          child: Building(
+        sblock: routeData.pathParameters['sblock']!,
+      )),
+  '/floor/:sblock/:floor': (routeData) => MaterialPage(
+          child: FloorPlan(
+        sblock: routeData.pathParameters['sblock']!,
+        floor: routeData.pathParameters['floor']!,
       )),
 });

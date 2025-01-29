@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:open_rooms/widgets/Top_view.dart';
-import 'package:open_rooms/widgets/blocks.dart';
+import 'package:open_rooms/widgets/list_container.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
+import 'package:routemaster/routemaster.dart';
 
-class Buildings extends StatefulWidget {
-  const Buildings({super.key, required this.block});
+class Block extends StatefulWidget {
+  const Block({super.key, required this.block});
 
   final String block;
 
   @override
-  State<Buildings> createState() => _BuildingsState();
+  State<Block> createState() => _BlockState();
 }
 
-class _BuildingsState extends State<Buildings> {
+class _BlockState extends State<Block> {
   late int numberOfBuildings;
 
   @override
@@ -35,6 +36,10 @@ class _BuildingsState extends State<Buildings> {
     }
   }
 
+  void navigateToFloor(BuildContext context, String block, String building) {
+    Routemaster.of(context).push('/building/$block$building');
+  }
+
   @override
   Widget build(BuildContext context) {
     int buildings_left = numberOfBuildings;
@@ -47,6 +52,7 @@ class _BuildingsState extends State<Buildings> {
         ),
         body:
             TopView(text1: 'Welcome to', text2: '${widget.block}-Block', add: [
+          SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
@@ -76,10 +82,12 @@ class _BuildingsState extends State<Buildings> {
                                 remainingBlocks,
                                 (i) {
                                   int blockNumber = (index * 2) + i + 1;
-                                  return Blocks(
-                                    image: 'assets/a1_block.jpg',
+                                  return ListContainer(
+                                    image:
+                                        'assets/${widget.block.toLowerCase()}_block.jpg',
                                     text: '${widget.block}$blockNumber Block',
-                                    onTap: () {},
+                                    onTap: () => navigateToFloor(
+                                        context, widget.block, '$blockNumber'),
                                   );
                                 },
                               ),

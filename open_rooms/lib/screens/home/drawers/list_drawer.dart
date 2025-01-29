@@ -14,6 +14,10 @@ class ListDrawer extends ConsumerWidget {
     Routemaster.of(context).push('/feature-missing/$page');
   }
 
+  void navigateToTimetable(BuildContext context) {
+    Routemaster.of(context).push('/timetable');
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Drawer(
@@ -54,7 +58,7 @@ class ListDrawer extends ConsumerWidget {
                 color: Pallete.textColor,
                 size: Pallete.drawerIconSize,
               ),
-              onTap: () => navigateToNotAvailable(context, 'Timetable'),
+              onTap: () => navigateToTimetable(context),
             ),
             ListTile(
               title: Text(

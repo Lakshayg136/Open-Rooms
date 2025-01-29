@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
 
-class Blocks extends StatelessWidget {
-  const Blocks(
+class ListContainer extends StatelessWidget {
+  const ListContainer(
       {super.key,
       required this.image,
       required this.text,

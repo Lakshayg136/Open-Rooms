@@ -27,13 +27,14 @@ class TopView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      text1,
-                      style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500),
-                    ),
+                    if (text1.isNotEmpty)
+                      Text(
+                        text1,
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500),
+                      ),
                     SizedBox(height: 05),
                     Text(
                       text2,
@@ -45,9 +46,6 @@ class TopView extends StatelessWidget {
                     SizedBox(height: 10)
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 20,
               ),
               ...add,
             ]),

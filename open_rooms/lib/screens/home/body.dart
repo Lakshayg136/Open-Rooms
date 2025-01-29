@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_rooms/widgets/Top_view.dart';
-import 'package:open_rooms/widgets/blocks.dart';
+import 'package:open_rooms/widgets/list_container.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -16,6 +16,7 @@ class BodyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TopView(text1: 'Hello,', text2: '$username!', add: [
+      SizedBox(height: 20),
       Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -33,13 +34,13 @@ class BodyHome extends StatelessWidget {
                   height: 200,
                   child: Row(
                     children: [
-                      Blocks(
-                          image: 'assets/a1_block.jpg',
+                      ListContainer(
+                          image: 'assets/a_block.jpg',
                           text: 'A Block',
                           onTap: () => navigateToBlock(context, 'A')),
                       SizedBox(width: 10),
-                      Blocks(
-                          image: 'assets/d_block.jpg',
+                      ListContainer(
+                          image: 'assets/b_block.jpg',
                           text: 'B Block',
                           onTap: () => navigateToBlock(context, 'B')),
                     ],
@@ -50,12 +51,12 @@ class BodyHome extends StatelessWidget {
                   height: 200,
                   child: Row(
                     children: [
-                      Blocks(
+                      ListContainer(
                           image: 'assets/c_block.jpg',
                           text: 'C Block',
                           onTap: () => navigateToBlock(context, 'C')),
                       SizedBox(width: 10),
-                      Blocks(
+                      ListContainer(
                           image: 'assets/d_block.jpg',
                           text: 'D Block',
                           onTap: () => navigateToBlock(context, 'D')),
