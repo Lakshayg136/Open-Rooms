@@ -10,6 +10,10 @@ class ListDrawer extends ConsumerWidget {
     Routemaster.of(context).push('/settings');
   }
 
+  void navigateToNotAvailable(BuildContext context, String page) {
+    Routemaster.of(context).push('/feature-missing/$page');
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Drawer(
@@ -50,7 +54,7 @@ class ListDrawer extends ConsumerWidget {
                 color: Pallete.textColor,
                 size: Pallete.drawerIconSize,
               ),
-              onTap: () {},
+              onTap: () => navigateToNotAvailable(context, 'Timetable'),
             ),
             ListTile(
               title: Text(
@@ -66,7 +70,7 @@ class ListDrawer extends ConsumerWidget {
                 color: Pallete.textColor,
                 size: Pallete.drawerIconSize,
               ),
-              onTap: () {},
+              onTap: () => navigateToNotAvailable(context, 'Faculty-Rooms'),
             ),
             ListTile(
               title: Text(
@@ -82,7 +86,7 @@ class ListDrawer extends ConsumerWidget {
                 color: Pallete.textColor,
                 size: Pallete.drawerIconSize,
               ),
-              onTap: () {},
+              onTap: () => navigateToNotAvailable(context, 'Lab-Rooms'),
             ),
             ListTile(
               title: Text(

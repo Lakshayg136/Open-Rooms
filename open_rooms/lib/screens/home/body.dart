@@ -1,51 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:open_rooms/screens/home/blocks.dart';
+import 'package:open_rooms/widgets/Top_view.dart';
+import 'package:open_rooms/widgets/blocks.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
+import 'package:routemaster/routemaster.dart';
 
 class BodyHome extends StatelessWidget {
   const BodyHome({super.key, required this.username});
 
   final String username;
 
+  void navigateToBlock(BuildContext context, String block) {
+    Routemaster.of(context).push('/block/$block');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(30)),
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hello,',
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(height: 05),
-                Text(
-                  '$username!',
-                  style: TextStyle(
-                      color: Pallete.homeColor,
-                      fontSize: 40,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(height: 10)
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
+    return TopView(text1: 'Hello,', text2: '$username!', add: [
+      Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
@@ -63,12 +36,12 @@ class BodyHome extends StatelessWidget {
                       Blocks(
                           image: 'assets/a1_block.jpg',
                           text: 'A Block',
-                          onTap: () {}),
+                          onTap: () => navigateToBlock(context, 'A')),
                       SizedBox(width: 10),
                       Blocks(
                           image: 'assets/d_block.jpg',
                           text: 'B Block',
-                          onTap: () {}),
+                          onTap: () => navigateToBlock(context, 'B')),
                     ],
                   ),
                 ),
@@ -80,27 +53,16 @@ class BodyHome extends StatelessWidget {
                       Blocks(
                           image: 'assets/c_block.jpg',
                           text: 'C Block',
-                          onTap: () {}),
+                          onTap: () => navigateToBlock(context, 'C')),
                       SizedBox(width: 10),
                       Blocks(
                           image: 'assets/d_block.jpg',
                           text: 'D Block',
-                          onTap: () {}),
+                          onTap: () => navigateToBlock(context, 'D')),
                     ],
                   ),
                 ),
-                // Container(
-                //     height: 150,
-                //     decoration: BoxDecoration(
-                //       color: Colors.orange,
-                //       borderRadius: BorderRadius.circular(20),
-                //       image: DecorationImage(
-                //           fit: BoxFit.cover,
-                //           image: AssetImage('assets/home_bg.png')),
-                //     ))
-              ],
-            ),
-          )
-        ]));
+              ]))
+    ]);
   }
 }
