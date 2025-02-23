@@ -1,62 +1,20 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_rooms/models/user_model.dart';
-import 'package:open_rooms/resources/auth/auth_controller.dart';
-import 'package:open_rooms/router.dart';
 import 'package:open_rooms/utils/theme.dart';
-import 'package:open_rooms/widgets/error_text.dart';
-import 'package:open_rooms/widgets/loader.dart';
-import 'package:routemaster/routemaster.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
-  );
+void main() {
+  runApp(const MyApp());
 }
 
-class MyApp extends ConsumerStatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MyAppState();
-}
-
-class _MyAppState extends ConsumerState<MyApp> {
-  UserModel? userModel;
-  void getData(WidgetRef ref, User data) async {
-    userModel = await ref
-        .watch(authControllerProvider.notifier)
-        .getUserData(data.uid)
-        .first;
-    ref.read(userProvider.notifier).update((state) => userModel);
-    setState(() {});
-  }
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ref.watch(authStateChangeProvider).when(
-        data: (data) => MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              title: 'Open Rooms',
-              theme: AppTheme.lightThemeMode,
-              routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
-                if (data != null) {
-                  getData(ref, data);
-                  if (userModel != null) {
-                    return loggedInRoute;
-                  }
-                }
-                return loggedOutRoute;
-              }),
-              routeInformationParser: const RoutemasterParser(),
-            ),
-        error: (error, StackTrace) => ErrorText(error: error.toString()),
-        loading: () => const Loader());
+    return MaterialApp(
+      title: 'Open Rooms',
+      theme: AppTheme.darkThemeMode,
+      home: Scaffold(body: Text('Hello'),),
+    );
   }
 }
