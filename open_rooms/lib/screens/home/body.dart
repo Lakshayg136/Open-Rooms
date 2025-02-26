@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_rooms/widgets/Top_view.dart';
 import 'package:open_rooms/widgets/list_container.dart';
-import 'package:open_rooms/utils/app_pallete.dart';
 import 'package:routemaster/routemaster.dart';
 
 class BodyHome extends StatelessWidget {

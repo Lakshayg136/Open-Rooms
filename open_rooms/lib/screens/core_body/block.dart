@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:open_rooms/widgets/Top_view.dart';
 import 'package:open_rooms/widgets/list_container.dart';
 import 'package:open_rooms/utils/app_pallete.dart';
@@ -42,16 +43,17 @@ class _BlockState extends State<Block> {
 
   @override
   Widget build(BuildContext context) {
-    int buildings_left = numberOfBuildings;
     return Scaffold(
-        backgroundColor: Pallete.backgroundColor2,
-        appBar: AppBar(
-          foregroundColor: Pallete.logoColor,
-          backgroundColor: Pallete.backgroundColor,
-          elevation: 0,
-        ),
-        body:
-            TopView(text1: 'Welcome to', text2: '${widget.block}-Block', add: [
+      backgroundColor: Pallete.backgroundColor2,
+      appBar: AppBar(
+        foregroundColor: Pallete.logoColor,
+        backgroundColor: Pallete.backgroundColor,
+        elevation: 0,
+      ),
+      body: TopView(
+        text1: 'Welcome to',
+        text2: '${widget.block}-Block',
+        add: [
           SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -65,36 +67,28 @@ class _BlockState extends State<Block> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20),
-                Column(
-                  children: List.generate(
-                    (numberOfBuildings / 2).ceil(),
+                SizedBox(height: 50),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 400,
+                    enableInfiniteScroll: true,
+                    enlargeCenterPage: false,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 2),
+                  ),
+                  items: List.generate(
+                    numberOfBuildings,
                     (index) {
-                      int remainingBlocks = (index * 2) + 2 > numberOfBuildings
-                          ? numberOfBuildings - (index * 2)
-                          : 2;
-                      return Column(
-                        children: [
-                          SizedBox(
-                            height: 200,
-                            child: Row(
-                              children: List.generate(
-                                remainingBlocks,
-                                (i) {
-                                  int blockNumber = (index * 2) + i + 1;
-                                  return ListContainer(
-                                    image:
-                                        'assets/${widget.block.toLowerCase()}_block.jpg',
-                                    text: '${widget.block}$blockNumber Block',
-                                    onTap: () => navigateToFloor(
-                                        context, widget.block, '$blockNumber'),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                        ],
+                      int blockNumber = index + 1;
+                      String imagePath = widget.block == 'C'
+                          ? 'assets/c${blockNumber}_block.jpg'
+                          : 'assets/${widget.block.toLowerCase()}_block.jpg';
+                      return ListContainer(
+                        image: imagePath,
+                        text: '${widget.block}$blockNumber Block',
+                        fontSize: 30,
+                        onTap: () => navigateToFloor(
+                            context, widget.block, '$blockNumber'),
                       );
                     },
                   ),
@@ -103,6 +97,8 @@ class _BlockState extends State<Block> {
               ],
             ),
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }

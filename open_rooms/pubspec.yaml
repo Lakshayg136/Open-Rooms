@@ -70,6 +70,9 @@ flutter:
     - assets/a_block.jpg
     - assets/b_block.jpg
     - assets/c_block.jpg
+    - assets/c1_block.jpg
+    - assets/c2_block.jpg
+    - assets/c3_block.jpg
     - assets/d_block.jpg
     - assets/home_bg.png
     - assets/profile.png

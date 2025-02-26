@@ -1,0 +1,2 @@
+C:/Users/karan/Desktop/Projects/Open Rooms/open_rooms/android/app/.cxx/Debug/716e532z/x86/CMakeFiles/edit_cache.dir
+C:/Users/karan/Desktop/Projects/Open Rooms/open_rooms/android/app/.cxx/Debug/716e532z/x86/CMakeFiles/rebuild_cache.dir

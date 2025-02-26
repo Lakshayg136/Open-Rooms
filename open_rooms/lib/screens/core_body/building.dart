@@ -26,7 +26,7 @@ class _BuildingState extends State<Building> {
     if (building == 'A1') {
       return 6;
     }
-    return 2;
+    return 7;
   }
 
   void navigateToFloor(BuildContext context, String sblock, String floor) {
@@ -41,6 +41,11 @@ class _BuildingState extends State<Building> {
         foregroundColor: Pallete.logoColor,
         backgroundColor: Pallete.backgroundColor,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () =>
+              Routemaster.of(context).push('/block/${widget.sblock[0]}'),
+        ),
       ),
       body: TopView(
           text1: '${widget.sblock} Block',

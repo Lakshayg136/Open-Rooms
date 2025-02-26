@@ -6,11 +6,13 @@ class ListContainer extends StatelessWidget {
       {super.key,
       required this.image,
       required this.text,
-      required this.onTap});
+      required this.onTap,
+      this.fontSize = 20});
 
   final String image;
   final String text;
   final VoidCallback onTap;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class ListContainer extends StatelessWidget {
                     child: Text(
                       text,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: fontSize,
                         color: Pallete.primaryColor,
                         fontWeight: FontWeight.bold,
                       ),

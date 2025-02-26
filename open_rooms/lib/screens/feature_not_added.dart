@@ -53,7 +53,7 @@ class FeatureNotAdded extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'This feature is not available yet.',
+                          'This feature is coming soon.',
                           style: TextStyle(
                             fontSize: 18,
                           ),
